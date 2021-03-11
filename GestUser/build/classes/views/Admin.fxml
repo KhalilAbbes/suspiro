@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="462.0" prefWidth="855.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminController">
+   <children>
+      <TableView fx:id="tableau" layoutX="232.0" layoutY="49.0" prefHeight="364.0" prefWidth="538.0">
+        <columns>
+          <TableColumn fx:id="firstname" prefWidth="120.0" text="First Name" />
+          <TableColumn fx:id="lastname" prefWidth="93.0" text="Last Name" />
+            <TableColumn fx:id="email" prefWidth="117.0" text="Email" />
+            <TableColumn fx:id="phonenumber" prefWidth="122.0" text="Phone Number" />
+            <TableColumn fx:id="login" prefWidth="123.0" text="Login" />
+        </columns>
+      </TableView>
+      <Button fx:id="supprimer" layoutX="481.0" layoutY="423.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
+      <VBox layoutX="74.0" layoutY="87.0" prefHeight="200.0" prefWidth="144.0" spacing="15.0">
+         <children>
+            <TextField fx:id="firstnamet" />
+            <TextField fx:id="lastnamet" />
+            <TextField fx:id="emailt" />
+            <TextField fx:id="phonenumbert" />
+            <TextField fx:id="logint" />
+         </children>
+      </VBox>
+      <Button layoutX="74.0" layoutY="314.0" mnemonicParsing="false" onAction="#charger" text="Charger" />
+      <Button layoutX="157.0" layoutY="314.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
+      <Button layoutX="31.0" layoutY="14.0" mnemonicParsing="false" onAction="#retour" prefWidth="78.0" text="Retour" />
+      <TextField fx:id="firstnamet1" layoutX="438.0" layoutY="14.0" onKeyPressed="#chercher" prefHeight="25.0" prefWidth="196.0" promptText="Rechercher par First Name" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Suspiro_pdt.AjouterProduitController">
+   <children>
+      <VBox layoutX="95.0" layoutY="54.0" prefHeight="192.0" prefWidth="100.0" spacing="25.0">
+         <children>
+            <Label text="Nom" textFill="#544b4b">
+               <font>
+                  <Font name="Calibri" size="22.0" />
+               </font>
+            </Label>
+            <Label text="Prix" textFill="#544b4b">
+               <font>
+                  <Font name="Calibri" size="22.0" />
+               </font>
+            </Label>
+            <Label text="Catégorie" textFill="#544b4b">
+               <font>
+                  <Font name="Calibri" size="22.0" />
+               </font>
+            </Label>
+            <Label text="Photo" textFill="#544b4b">
+               <font>
+                  <Font name="Calibri" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="61.0" text="Stock" textFill="#544b4b">
+               <font>
+                  <Font name="Calibri" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="195.0" layoutY="42.0" prefHeight="265.0" prefWidth="266.0" spacing="15.0">
+         <children>
+            <TextField fx:id="tfNom" layoutX="10.0" layoutY="10.0" promptText="Saisir le nom" />
+            <TextField fx:id="tfPrix" layoutX="10.0" layoutY="48.0" promptText="Saisir le prix" />
+            <AnchorPane prefHeight="40.0" prefWidth="260.0">
+               <children>
+                  <ComboBox fx:id="cmb_Categorie" prefHeight="38.0" prefWidth="137.0" promptText="Selectionner une catégorie" />
+                  <Button fx:id="btnConsulterCat" layoutX="146.0" mnemonicParsing="false" onAction="#consulterCategorie" prefHeight="38.0" prefWidth="114.0" text="Consulter" />
+               </children>
+            </AnchorPane>
+            <VBox layoutX="1.0" prefHeight="87.0" prefWidth="247.0">
+               <children>
+                  <AnchorPane prefHeight="94.0" prefWidth="266.0">
+                     <children>
+                        <Button fx:id="btnImporter" mnemonicParsing="false" onAction="#photoProduiteChooser" prefHeight="38.0" prefWidth="100.0" text="Importer" />
+                        <Text fx:id="label_photo" layoutX="109.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="156.99999409914017" />
+                        <CheckBox fx:id="ckbDispo" layoutY="53.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Disponible" />
+                        <CheckBox fx:id="ckbIndispo" layoutX="125.0" layoutY="53.0" mnemonicParsing="false" text="Indisponible" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <Button fx:id="btnAjouter" layoutX="229.0" layoutY="310.0" mnemonicParsing="false" onAction="#ajouterProduit" prefHeight="38.0" prefWidth="122.0" text="Ajouter " />
+   </children>
+</AnchorPane>

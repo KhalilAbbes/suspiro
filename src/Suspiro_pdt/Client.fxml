@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Suspiro_pdt.ClientController">
+   <children>
+      <ImageView fitHeight="640.0" fitWidth="1024.0">
+         <image>
+            <Image url="@../res/Produit_photo/bckgdClient.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tvProduit" layoutX="159.0" layoutY="253.0" prefHeight="345.0" prefWidth="730.0">
+         <columns>
+            <TableColumn fx:id="colNom" prefWidth="137.0" text="Nom" />
+            <TableColumn fx:id="colPrix" minWidth="9.0" prefWidth="79.0" text="Prix" />
+            <TableColumn fx:id="colCategorie" prefWidth="144.0" text="Catégorie" />
+            <TableColumn fx:id="colPhoto" prefWidth="108.0" text="Photo" />
+            <TableColumn fx:id="colStock" prefWidth="157.0" text="Stock" />
+            <TableColumn fx:id="colPanier" minWidth="0.0" prefWidth="100.0" text="Panier" />
+         </columns>
+      </TableView>
+      <TextField fx:id="tfRecherche" layoutX="407.0" layoutY="80.0" promptText="Recherche..." />
+      <Button fx:id="btnTrieP" layoutX="33.0" layoutY="253.0" mnemonicParsing="false" text="Trie par Prix">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <ComboBox fx:id="cmb_Categorie1" layoutX="33.0" layoutY="205.0" prefHeight="38.0" prefWidth="201.0" promptText="Trie par Catégorie" />
+      <Button fx:id="btnRafraichir" layoutX="800.0" layoutY="206.0" mnemonicParsing="false" onAction="#Rafraichir" text="Rafraichir">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <AnchorPane layoutX="14.0" layoutY="-16.0" prefHeight="164.0" prefWidth="277.0">
+         <children>
+            <TextField fx:id="tfCodePromo" layoutX="14.0" layoutY="126.0" prefHeight="38.0" prefWidth="201.0" promptText="Taper le code" />
+            <Label layoutX="7.0" layoutY="87.0" text="Entrer votre code promo :" textFill="#544b4b">
+               <font>
+                  <Font name="Calibri" size="22.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnVerifierC" layoutX="221.0" layoutY="130.0" mnemonicParsing="false" onAction="#testcode" prefHeight="30.0" prefWidth="68.0" text="Vérifier">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label fx:id="label" layoutX="33.0" layoutY="156.0" prefHeight="30.0" prefWidth="384.0" />
+   </children>
+</AnchorPane>

@@ -20,11 +20,17 @@
       <TextField fx:id="tfRecherche" layoutX="399.0" layoutY="78.0" promptText="Recherche..." />
       <Button fx:id="btnTrieP" layoutX="43.0" layoutY="116.0" mnemonicParsing="false" text="Trie par Prix" />
       <ComboBox fx:id="cmb_Categorie1" layoutX="43.0" layoutY="164.0" prefHeight="38.0" prefWidth="198.0" promptText="Trie par Catégorie" />
-      <Button fx:id="btnRafraichir" layoutX="43.0" layoutY="215.0" mnemonicParsing="false" onAction="#Rafraichir" text="Rafraichir" />
-      <Button fx:id="btnpdf" layoutX="782.0" layoutY="215.0" mnemonicParsing="false" onAction="#genererPDF" text="PDF">
+      <Button fx:id="btnpdf" layoutX="939.0" layoutY="173.0" mnemonicParsing="false" onAction="#genererPDF" prefHeight="38.0" prefWidth="51.0">
          <font>
             <Font size="14.0" />
-         </font></Button>
+         </font>
+         <graphic>
+            <ImageView fitHeight="29.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../res/Produit_photo/icones/PDF.PNG" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <Button fx:id="btnCodeP" layoutX="871.0" layoutY="78.0" mnemonicParsing="false" onAction="#consulterCodePromo" text="Code Promo" />
       <Button fx:id="btnAjouterP" layoutX="849.0" layoutY="126.0" mnemonicParsing="false" onAction="#AjouterP" prefHeight="38.0" prefWidth="141.0" text="Ajouter Produit" />
       <TableView fx:id="tvProduit" layoutX="197.0" layoutY="253.0" prefHeight="345.0" prefWidth="630.0">
@@ -36,5 +42,14 @@
             <TableColumn fx:id="colStock" prefWidth="157.0" text="Stock" />
          </columns>
       </TableView>
+      <Button fx:id="btnRafraichir" layoutX="776.0" layoutY="212.0" mnemonicParsing="false" onAction="#Rafraichir">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../res/Produit_photo/icones/Rafraichir.PNG" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

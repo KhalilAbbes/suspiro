@@ -11,17 +11,21 @@ import Service.ServiceCodePromo;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /**
@@ -62,7 +66,6 @@ public class CodePromoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      
 
         AfficherAll();
         // TODO
@@ -85,13 +88,19 @@ public class CodePromoController implements Initializable {
 
     @FXML
     void SupprimerCodeP(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         CodePromo c = tvCodePromo.getSelectionModel().getSelectedItem();
+        alert.setTitle("suppression");
+        alert.setHeaderText("Etes-vous sur de vouloir supprimer ce code promo : '"
+                + c.getCode() + "'  ?");
+        Optional<ButtonType> result = alert.showAndWait();
         if (c==null) {
         JOptionPane.showMessageDialog(null,"There is nothing selected !");
-        }
-        else{
+        } else if (result.get() == ButtonType.OK) {
             servicecodepromo.delete(c);
-        ;}
+            arrayList.clear();
+            AfficherAll();
+        }
 
     }
 
@@ -101,9 +110,9 @@ public class CodePromoController implements Initializable {
  
         codepromo.setCode(tfCode.getText());
         System.out.println(codepromo.toString());
- //       observableList.add(categorie);
-//        observableList.notifyAll();
         servicecodepromo.add(codepromo);
+        arrayList.clear();
+        AfficherAll();
 
     }
     

@@ -4,21 +4,38 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Suspiro_pdt.PhotoProduitController">
    <children>
-      <ImageView fx:id="ImageView" fitHeight="231.0" fitWidth="285.0" layoutX="303.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="146.0" AnchorPane.leftAnchor="303.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="23.0" />
+      <ImageView fx:id="ImageView" fitHeight="231.0" fitWidth="251.0" layoutX="337.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="146.0" AnchorPane.leftAnchor="337.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="23.0" />
       <Button fx:id="btnModifier" layoutX="109.0" layoutY="311.0" mnemonicParsing="false" onAction="#ModifierProduit" prefHeight="38.0" prefWidth="107.0" text="Modifier" />
-      <Button fx:id="btnSupprimer" layoutX="386.0" layoutY="311.0" mnemonicParsing="false" onAction="#SupprimerProduit" prefHeight="38.0" prefWidth="107.0" text="Supprimer" />
+      <Button fx:id="btnSupprimer" layoutX="431.0" layoutY="309.0" mnemonicParsing="false" onAction="#SupprimerProduit" prefHeight="43.0" prefWidth="36.0">
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../res/Produit_photo/icones/supp.PNG" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <TextField fx:id="tfPrix" layoutX="36.0" layoutY="84.0" prefHeight="38.0" prefWidth="78.0" promptText="prix" />
       <TextField fx:id="tfNom" layoutX="36.0" layoutY="35.0" prefHeight="38.0" prefWidth="115.0" promptText="nom" />
       <ComboBox fx:id="cmb_Categorie" layoutX="38.0" layoutY="181.0" prefHeight="38.0" prefWidth="219.0" promptText="Selectionner une catégorie" />
       <Button fx:id="btnImporter" layoutX="36.0" layoutY="132.0" mnemonicParsing="false" onAction="#photoProduitChooser" prefHeight="38.0" prefWidth="115.0" text="Photo" />
-      <Text fx:id="label_photo" layoutX="378.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="123.3603515625" />
+      <Text fx:id="label_photo" layoutX="337.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="188.3603515625" />
       <CheckBox fx:id="ckbDispo" layoutX="37.0" layoutY="241.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Disponible" />
       <CheckBox fx:id="ckbIndispo" layoutX="163.0" layoutY="241.0" mnemonicParsing="false" text="Indisponible" />
+      <Button fx:id="btnQRcode" layoutX="540.0" layoutY="258.0" mnemonicParsing="false" onAction="#QRcode" prefHeight="38.0" prefWidth="40.0">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../res/Produit_photo/icones/qr-code.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

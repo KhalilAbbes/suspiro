@@ -12,13 +12,24 @@ import IService.IServiceProduit;
 import Service.ServiceCategorie;
 import Service.ServiceProduit;
 import Utils.copyImage;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -40,6 +51,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 
 /**
  * FXML Controller class
@@ -56,6 +68,9 @@ public class PhotoProduitController implements Initializable {
 
     @FXML
     private Button btnSupprimer;
+    
+    @FXML
+    private Button btnQRcode;
 
     @FXML
     private TextField tfPrix;
@@ -82,6 +97,7 @@ public class PhotoProduitController implements Initializable {
     private IServiceCategorie servicecategorie = new ServiceCategorie();
     private Produit produit;
     private String absolutePathPhotoProduit;
+    private String filePath;
     
     
     @Override
@@ -169,5 +185,60 @@ public class PhotoProduitController implements Initializable {
             s.close();
         }
    }
+   
+   
+   @FXML
+    private void QRcode(ActionEvent event) {
+        String nom = cmb_Categorie.getSelectionModel().getSelectedItem();
+        produit.setCategorie(nom);
+        String myCodeText = tfNom.getText() + tfPrix.getText() + nom;
+        filePath = "C:\\Users\\kenza\\Desktop\\PIDEV\\Suspiro_pdt\\src\\res\\Produit_photo\\QRcode\\QRC" + tfNom.getText() + ".png";
+        int size = 250;
+        String fileType = "png";
+        File myFile = new File(filePath);
+        try {
+            // hint map eli chnestoki fyha 
+            Map<EncodeHintType, Object> hintMap = new EnumMap<>(EncodeHintType.class);
+            hintMap.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+
+            // Now with zxing version 3.2.1 you could change border size 
+            //hintMap.put(EncodeHintType.MARGIN, 1);
+            /* default = 4 */
+            hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+            // creation qr
+            QRCodeWriter qrCodeWriter = new QRCodeWriter();
+            BitMatrix byteMatrix = qrCodeWriter.encode(myCodeText, BarcodeFormat.QR_CODE, size,
+                    size, hintMap);
+            int CrunchifyWidth = byteMatrix.getWidth();
+            BufferedImage image = new BufferedImage(CrunchifyWidth, CrunchifyWidth,
+                    BufferedImage.TYPE_INT_RGB);
+            image.createGraphics();
+
+            Graphics2D graphics = (Graphics2D) image.getGraphics();
+            graphics.setColor(Color.WHITE);
+            graphics.fillRect(0, 0, CrunchifyWidth, CrunchifyWidth);
+            graphics.setColor(Color.black);
+
+            for (int i = 0; i < CrunchifyWidth; i++) {
+                for (int j = 0; j < CrunchifyWidth; j++) {
+                    if (byteMatrix.get(i, j)) {
+                        graphics.fillRect(i, j, 1, 1);
+                    }
+                }
+            }
+
+            ImageIO.write(image, fileType, myFile);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("\n\nYou have successfully created QR Code.");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("QR Code ");
+        alert.setHeaderText(null);
+        alert.setContentText("QR Code générer avec succès !");
+        alert.showAndWait();
+    }
 
 }

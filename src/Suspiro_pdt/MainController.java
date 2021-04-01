@@ -16,6 +16,7 @@ import Utils.copyImage;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -45,6 +46,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -274,54 +276,54 @@ public class MainController implements Initializable {
       
     @FXML
     private void genererPDF(ActionEvent event) throws IOException,FileNotFoundException, DocumentException  {
-        
-            String file_name="C:\\Users\\kenza\\Desktop\\PIDEV\\Suspiro_pdt\\src\\res\\Produit_photo\\listeProduits.pdf";
-            Document document = new Document();
-            
-            PdfWriter.getInstance(document, new FileOutputStream(file_name));
-            
-            document.open();
-            PdfPTable t = new PdfPTable(5);
-            PdfPCell c1 = new PdfPCell(new Phrase("Photo"));
-            c1.setBorderColor(BaseColor.RED);
-            t.addCell(c1);
-            PdfPCell c2 = new PdfPCell(new Phrase("Nom"));
-            c2.setBorderColor(BaseColor.RED);
-            t.addCell(c2);
-            PdfPCell c3 = new PdfPCell(new Phrase("Prix"));
-            c3.setBorderColor(BaseColor.RED);
-            t.addCell(c3);
-            PdfPCell c4 = new PdfPCell(new Phrase("Catégorie"));
-            c4.setBorderColor(BaseColor.RED);
-            t.addCell(c4);
-            PdfPCell c5 = new PdfPCell(new Phrase("Stock"));
-            c5.setBorderColor(BaseColor.RED);
-            t.addCell(c5);
-            t.setHeaderRows(arrayList.size());
-          try {
-            for(Produit p : arrayList)
-            {
-                com.itextpdf.text.Image x = com.itextpdf.text.Image.getInstance("C:\\Users\\kenza\\Desktop\\PIDEV\\Suspiro_pdt\\src\\res\\Produit_photo\\" + p.getPhoto());
-                x.scaleToFit(100, 100);
-                t.addCell(x);
-                t.addCell(p.getNom());
-                t.addCell(Double.toString(p.getPrix()));
-                t.addCell(p.getCategorie());
-                t.addCell(p.getStock());
-                document.add(t);
-            }
-            document.close();
-            System.out.println("*** PDF créé dans le fichier Produit_photo ***");
-        } catch (DocumentException ex) {
-            System.out.println(ex); 
+        String file_name="C:\\Users\\kenza\\Desktop\\PIDEV\\Suspiro_pdt\\src\\res\\Produit_photo\\listeProduits.pdf";
+        Document document = new Document();
+
+        PdfWriter.getInstance(document, new FileOutputStream(file_name));
+
+        document.open();
+        PdfPTable t = new PdfPTable(5);
+        PdfPCell c1 = new PdfPCell(new Phrase("Photo"));
+        c1.setBorderColor(BaseColor.RED);
+        c1.setPaddingLeft(5);
+        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        c1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        t.addCell(c1);
+        PdfPCell c2 = new PdfPCell(new Phrase("Nom"));
+        c2.setBorderColor(BaseColor.RED);
+        t.addCell(c2);
+        PdfPCell c3 = new PdfPCell(new Phrase("Prix"));
+        c3.setBorderColor(BaseColor.RED);
+        t.addCell(c3);
+        PdfPCell c4 = new PdfPCell(new Phrase("Catégorie"));
+        c4.setBorderColor(BaseColor.RED);
+        t.addCell(c4);
+        PdfPCell c5 = new PdfPCell(new Phrase("Stock"));
+        c5.setBorderColor(BaseColor.RED);
+        t.addCell(c5);
+        t.setHeaderRows(arrayList.size());
+      try {
+        for(Produit p : arrayList)
+        {
+            com.itextpdf.text.Image x = com.itextpdf.text.Image.getInstance("C:\\Users\\kenza\\Desktop\\PIDEV\\Suspiro_pdt\\src\\res\\Produit_photo\\" + p.getPhoto());
+            x.scaleToFit(100, 100);
+            t.addCell(x);
+            t.addCell(p.getNom());
+            t.addCell(Double.toString(p.getPrix()));
+            t.addCell(p.getCategorie());
+            t.addCell(p.getStock());
+            document.add(t);
         }
+        document.close();
+        System.out.println("*** PDF créé dans le fichier Produit_photo ***");
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("PDF ");
         alert.setHeaderText(null);
         alert.setContentText("PDF générer avec succès !");
         alert.showAndWait();
-
-  
+        } catch (DocumentException ex) {
+            System.out.println(ex); 
+        }
     }
     
     

@@ -83,7 +83,7 @@ public class AjouterProduitController implements Initializable {
     void ajouterProduit(ActionEvent event) {
         Produit produit = new Produit();
         
-        if(!tfNom.getText().equals("") && !label_photo.getText().equals("") && !(ckbDispo.isSelected()==false || !ckbIndispo.isSelected()==false) ) {
+        if(!tfNom.getText().equals("") && !label_photo.getText().equals("") && (!ckbDispo.isSelected()==false || !ckbIndispo.isSelected()==false) ) {
        
             produit.setNom(tfNom.getText());
             produit.setPrix(Double.parseDouble(tfPrix.getText()));

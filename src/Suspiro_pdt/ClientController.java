@@ -149,12 +149,8 @@ public class ClientController implements Initializable {
             colStock.setCellValueFactory(new PropertyValueFactory<Produit, String>("Stock"));
             colPanier.setCellFactory(col -> new TableCell<Produit, Void>() {
                 private final Button button;
-                {
+                { 
                     button = new Button("Panier ");
-//                    button.setOnAction(evt -> {
-//                        Produit item = (Produit) getTableRow().getItem();
-//                        detailsProduit(item);
-//                    });
                 }
                 @Override
                 protected void updateItem(Void item, boolean empty) {

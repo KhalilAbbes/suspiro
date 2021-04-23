@@ -1,0 +1,11 @@
+{{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+<div class="row">
+    <div class="col-md-5 pr-md-1">
+        <div class="form-group">
+            <label>{{ form_label(form.code, "Code  ") }}</label>
+            {{ form_widget(form.code, {'attr': {'class':'form-control','placeholder': 'Saisir le code'}}) }}
+            {{ form_errors(form.code) }}
+        </div>
+    </div>
+</div><button type="submit" class="btn btn-fill btn-primary btn-sm me-2">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

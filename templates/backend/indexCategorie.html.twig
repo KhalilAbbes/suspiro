@@ -1,0 +1,36 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}Categories {% endblock %}
+
+{% block body %}
+    <h4 class="card-title"> Catégorie </h4>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.id }}</td>
+                <td>{{ categorie.nom }}</td>
+                <td>
+                    <a href="{{ path('categorie_show', {'id': categorie.id}) }}"><i class="tim-icons icon-notes"></i></a>
+                    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}"><i class="tim-icons icon-pencil"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('categorie_new') }}"><i class="tim-icons icon-simple-add"></i></a>
+{% endblock %}

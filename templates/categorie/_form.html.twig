@@ -1,0 +1,19 @@
+
+ {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+        <div class="row">
+            <div class="col-md-5 pr-md-1">
+                <div class="form-group">
+                <label>{{ form_label(form.nom, "Nom  ") }}</label>
+                    {{ form_widget(form.nom, {'attr': {'class':'form-control','placeholder': 'Saisir le nom'}}) }}
+                    {{ form_errors(form.nom) }}
+                </div>
+            </div>
+        </div>
+
+<br>
+{{ form_rest(form) }}
+<br>
+
+<button type="submit" class="btn btn-fill btn-primary btn-sm me-2">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}
+

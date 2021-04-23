@@ -1,0 +1,14 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}Edit Codepromo{% endblock %}
+
+{% block body %}
+    <h4 class="title">Modifier Code promo</h4>
+
+    {{ include('codepromo/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+
+    {{ include('codepromo/_delete_form.html.twig') }}
+    <br>
+    <a href="{{ path('codepromo_dashboard_index') }}">back to list</a>
+{% endblock %}

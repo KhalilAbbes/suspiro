@@ -1,0 +1,11 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}New Codepromo{% endblock %}
+
+{% block body %}
+<h4 class="title">Ajouter Code promo</h4>
+
+    {{ include('codepromo/_form.html.twig') }}
+<br>
+    <a href="{{ path('codepromo_dashboard_index') }}">back to list</a>
+{% endblock %}

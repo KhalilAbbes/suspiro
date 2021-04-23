@@ -1,0 +1,43 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}Magasin{% endblock %}
+
+{% block body %}
+    <h4 class="card-title"> Liste des produits </h4>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Photo</th>
+            <th>Catégorie</th>
+            <th>Stock</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.nom }}</td>
+                <td>{{ produit.prix }}</td>
+                <td><img style=" width: 200px;height: 200px" src="{{ asset('uploads/' ~ produit.photo) }}"></td>
+                <td>{{ produit.categorie.nom}}</td>
+                <td>{{ produit.stock }}</td>
+                <td>
+                    <a href="{{ path('produit_show', {'id': produit.id}) }}"><i class="tim-icons icon-notes"></i></a>
+                    <a href="{{ path('produit_edit', {'id': produit.id}) }}"><i class="tim-icons icon-pencil"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('produit_new') }}"><i class="tim-icons icon-simple-add"></i></a>
+{% endblock %}

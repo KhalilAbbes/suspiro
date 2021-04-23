@@ -1,0 +1,35 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}Codepromo index{% endblock %}
+
+{% block body %}
+    <h4 class="card-title"> Code Promo </h4>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Code</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for codepromo in codepromos %}
+            <tr>
+                <td>{{ codepromo.id }}</td>
+                <td>{{ codepromo.code }}</td>
+                <td>
+                    <a href="{{ path('codepromo_show', {'id': codepromo.id}) }}"><i class="tim-icons icon-notes"></i></a>
+                    <a href="{{ path('codepromo_edit', {'id': codepromo.id}) }}"><i class="tim-icons icon-pencil"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('codepromo_new') }}"><i class="tim-icons icon-simple-add"></i></a>
+{% endblock %}

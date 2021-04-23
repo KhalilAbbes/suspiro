@@ -1,0 +1,29 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}Categorie{% endblock %}
+
+{% block body %}
+<h4 class="title">Categorie</h4>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ categorie.nom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('categorie_dashboard_index') }}">back to list</a>
+<br><br>
+    <form method="post" action="{{ path('categorie_edit', {'id': categorie.id}) }}" >
+        <input type="hidden" name="_token" value="{{ csrf_token('id' ~ categorie.id) }}">
+        <button type="submit" class="btn btn-fill btn-primary btn-sm me-2">Modifier</button>
+    </form>
+
+    {{ include('categorie/_delete_form.html.twig') }}
+{% endblock %}

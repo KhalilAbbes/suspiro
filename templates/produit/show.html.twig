@@ -1,0 +1,45 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+
+{% block body %}
+      <h4 class="title">Produit</h4>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ produit.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ produit.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ produit.prix }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td><img style=" width: 200px;height: 200px" src="{{ asset('uploads/' ~ produit.photo) }}"></td>
+            </tr>
+            <tr>
+                <th>Catégorie</th>
+                <td>{{ produit.categorie.nom }}</td>
+            </tr>
+            <tr>
+                <th>Stock</th>
+                <td>{{ produit.stock }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('produit_dashboard_index') }}">back to list</a>
+<br><br>
+    <form method="post" action="{{ path('produit_edit', {'id': produit.id}) }}" >
+        <input type="hidden" name="_token" value="{{ csrf_token('id' ~ produit.id) }}">
+        <button type="submit" class="btn btn-fill btn-primary btn-sm me-2">Modifier</button>
+    </form>
+
+    {{ include('produit/_delete_form.html.twig') }}
+{% endblock %}

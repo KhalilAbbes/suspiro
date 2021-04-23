@@ -1,0 +1,13 @@
+{% extends 'base_dashboard.html.twig' %}
+
+{% block title %}Edit Categorie{% endblock %}
+
+{% block body %}
+   <h4 class="title">Modifier Categorie</h4>
+
+    {{ include('categorie/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+    {{ include('categorie/_delete_form.html.twig') }}
+    <br>
+    <a href="{{ path('categorie_dashboard_index') }}">back to list</a>
+{% endblock %}

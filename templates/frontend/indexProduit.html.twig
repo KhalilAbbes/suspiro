@@ -1,0 +1,74 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Magasin{% endblock %}
+
+{% block body %}
+<section id="works"></section>
+<div class="container">
+    <div class="row centered mt mb">
+        <br>
+
+        <form method="post" action="{{ path('rechercheF') }}">
+            <input  type="text" class="form-control" id="inlineFormInputGroup" name="search" placeholder="Recherche.." required><br>
+            <input type="submit"  value="Rechercher">
+        </form><br><br>
+
+        <h1>Liste des Produits</h1> <br>
+
+        <form action="{{ path('triePrix') }}">
+            <input type="submit"  value="Trie Par Prix">
+        </form><br><br>
+
+
+
+        <form method="post" action="{{ path('Codepromo') }}">
+            <input  type="text" class="form-control" id="inlineFormInputGroup" name="code" placeholder="Saisir votre Code Promo" required><br>
+            {% if testCode==2 %}
+                Code Promo Invalide ! <br><br>
+            {% endif %}
+            {% if testCode==1 %}
+                 Vous avez obtenu 20% sur tous nos produits ! <br><br>
+            {% endif %}
+            <input type="submit"  value="Vérifier">
+        </form><br><br>
+
+        <br><br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Photo</th>
+            <th>Catégorie</th>
+            <th>Stock</th>
+            <th>Panier</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.nom }}</td>
+
+                {% if testCode == 1 %}
+                    <td>{{ produit.prix - (produit.prix * 0.2) }}</td>
+                {% else %}
+                    <td>{{ produit.prix }}</td>
+                {% endif %}
+
+                <td><img style=" width: 200px;height: 200px" src="{{ asset('uploads/' ~ produit.photo) }}"></td>
+                <td>{{ produit.categorie.nom}}</td>
+                <td>{{ produit.stock }}</td>
+                <td><button type="submit" class="btn-light">
+                        Panier</button> </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div></div>
+{% endblock %}
